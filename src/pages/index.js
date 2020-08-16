@@ -1,4 +1,5 @@
-import React from "react";
+import _ from "lodash";
+import React, { useState }from "react";
 import WelcomeBox from '../components/WelcomeBox';
 import InfoBox from '../components/InfoBox';
 import PokemonCard from '../components/PokemonCard';
@@ -6,6 +7,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/index.css';
 
 export default function Home() {
+  const [numCards, setNumCards] = useState(10);
+
   return (
     <React.Fragment>
       <header className="app-heading">
@@ -15,14 +18,18 @@ export default function Home() {
         <div className="row" style={{backgroundColor: 'red', padding: "3px"}}>
           <InfoBox>
               <input className="search-box" placeholder="Search Pokemons" />
-              <div className="row">
-                <WelcomeBox>
-                  <PokemonCard /> 
-                </WelcomeBox>
-                <WelcomeBox>
-                  <PokemonCard /> 
-                </WelcomeBox>
-              </div>
+              {
+                _.range(0, numCards, 2).map((num) => 
+                  <div className="row" key={num.toString()}>
+                      <WelcomeBox>
+                        <PokemonCard /> 
+                      </WelcomeBox>
+                      <WelcomeBox>
+                        <PokemonCard /> 
+                      </WelcomeBox>
+                    </div>
+                )
+              }
           </InfoBox>
           <InfoBox>
             <WelcomeBox style={{marginTop: "5em"}}>
