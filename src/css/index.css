@@ -1,0 +1,21 @@
+header > h1, div {
+    text-align: center;
+}
+
+header > h1 {
+    padding: 15px;
+}
+
+.welcome-box {
+    background-color: yellow;
+    border: solid 1px black;
+}
+
+body {
+    background-color: lightblue;
+}
+
+input.search-box {
+    padding: 5px;
+    margin: 10px;
+}
