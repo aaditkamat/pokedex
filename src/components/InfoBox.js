@@ -1,9 +1,9 @@
 import React from 'react';
 import '../css/InfoBox.css';
 
-const InfoBox = ({children}) => {
+const InfoBox = ({children, style}) => {
     return (
-        <div className="info-box col"> 
+        <div className="info-box col" style={style}> 
         {
             children
         }

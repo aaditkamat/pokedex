@@ -15,8 +15,8 @@ export default function Home() {
           <h1> Pokedex </h1>
       </header>
       <div className="container">
-        <div className="row" style={{backgroundColor: 'red', padding: "3px"}}>
-          <InfoBox>
+        <div className="row" style={{backgroundColor: 'red', padding: '3px'}}>
+          <InfoBox style={{overflowY: 'scroll', width: '100%'}}>
               <input className="search-box" placeholder="Search Pokemons" />
               {
                 _.range(0, numCards, 2).map((num) => 
@@ -32,7 +32,7 @@ export default function Home() {
               }
           </InfoBox>
           <InfoBox>
-            <WelcomeBox style={{marginTop: "5em"}}>
+            <WelcomeBox style={{marginTop: "8.5em"}}>
               <strong> Welcome to the pokedex </strong>
             </WelcomeBox>
           </InfoBox>
