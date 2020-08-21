@@ -1,5 +1,5 @@
 import _ from "lodash"
-import PokemonNames from "pokemon"
+import Pokemon from "pokemon"
 import PokemonImages from "pokemon-images"
 import React, { useState } from "react"
 import WelcomeBox from "../components/WelcomeBox"
@@ -9,7 +9,39 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import "../css/index.css"
 
 export default function Home() {
-  const [numCards, setNumCards] = useState(10)
+  const pokemonNames = Pokemon.all()
+  const [searchName, setSearchName] = useState("")
+
+  const showPokemon = () => {
+    const filteredNames = _.filter(pokemonNames, pokemonName =>
+      pokemonName.match(searchName)
+    )
+    return _.range(0, filteredNames.length / 2).map(num => {
+      const names = [filteredNames[2 * num], filteredNames[2 * num + 1]]
+      const spriteURLs = _.map(names, name => {
+        try {
+          return PokemonImages.getSprite(name)
+        } catch (err) {
+          return PokemonImages.getSprite(pokemonNames[0])
+        }
+      })
+      return (
+        <div className="row" key={num.toString()}>
+          <WelcomeBox>
+            <PokemonCard name={names[0]} spriteURL={spriteURLs[0]} />
+          </WelcomeBox>
+          <WelcomeBox>
+            <PokemonCard name={names[1]} spriteURL={spriteURLs[1]} />
+          </WelcomeBox>
+        </div>
+      )
+    })
+  }
+
+  const handleChange = event => {
+    const pokemonName = event.target.value
+    setSearchName(pokemonName)
+  }
 
   return (
     <React.Fragment>
@@ -19,29 +51,12 @@ export default function Home() {
       <div className="container">
         <div className="row" style={{ backgroundColor: "red", padding: "3px" }}>
           <InfoBox style={{ overflowY: "scroll", width: "100%" }}>
-            <input className="search-box" placeholder="Search Pokemons" />
-            {_.range(0, numCards, 2).map(num => {
-              const names = [
-                PokemonNames.getName(2 * num + 1),
-                PokemonNames.getName(2 * num + 2),
-              ]
-              return (
-                <div className="row" key={num.toString()}>
-                  <WelcomeBox>
-                    <PokemonCard
-                      name={names[0]}
-                      spriteURL={PokemonImages.getSprite(names[1])}
-                    />
-                  </WelcomeBox>
-                  <WelcomeBox>
-                    <PokemonCard
-                      name={names[1]}
-                      spriteURL={PokemonImages.getSprite(names[1])}
-                    />
-                  </WelcomeBox>
-                </div>
-              )
-            })}
+            <input
+              className="search-box"
+              placeholder="Search Pokemons"
+              onChange={handleChange}
+            />
+            {showPokemon()}
           </InfoBox>
           <InfoBox>
             <WelcomeBox style={{ marginTop: "8.5em" }}>
