@@ -8904,6 +8904,18 @@ pnp-webpack-plugin@^1.6.4:
   dependencies:
     ts-pnp "^1.1.6"
 
+pokemon-images@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/pokemon-images/-/pokemon-images-2.0.1.tgz#6465b3e97ebebb2a36f08a586bb1b06d01078fb8"
+  integrity sha1-ZGWz6X6+uyo28IpYa7GwbQEHj7g=
+
+pokemon@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/pokemon/-/pokemon-2.0.2.tgz#309389e95387eabd13b22c0fc46de8e91b856b54"
+  integrity sha512-lKfv+uUYOut9gO2w21/Nau+aIFF8JIUiuLXAymr09j+ie8oiUOoV2rqX8LhLFWppcz4lEnPNPV5wGPWla0x0wQ==
+  dependencies:
+    unique-random-array "^2.0.0"
+
 portfinder@^1.0.26:
   version "1.0.28"
   resolved "https://registry.yarnpkg.com/portfinder/-/portfinder-1.0.28.tgz#67c4622852bd5374dd1dd900f779f53462fac778"
@@ -11596,6 +11608,18 @@ unique-filename@^1.1.1:
   integrity sha512-Vmp0jIp2ln35UTXuryvjzkjGdRyf9b2lTXuSYUiPmzRcl3FDtYqAwOnTJkAngD9SWhnoJzDbTKwaOrZ+STtxNQ==
   dependencies:
     unique-slug "^2.0.0"
+
+unique-random-array@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/unique-random-array/-/unique-random-array-2.0.0.tgz#9e639b1a9dc141e97350a6fc6f17da4b0717b1ad"
+  integrity sha512-xR87O95fZ7hljw84J8r1YDXrvffPLWN513BNOP4Bv0KcgG5dyEUrHwsvP7mVAOKg4Y80uqRbpUk0GKr8il70qg==
+  dependencies:
+    unique-random "^2.1.0"
+
+unique-random@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/unique-random/-/unique-random-2.1.0.tgz#7a8413da5176d028567168b57125ac5c0cec5c25"
+  integrity sha512-iQ1ZgWac3b8YxGThecQFRQiqgk6xFERRwHZIWeVVsqlbmgCRl0PY13R4mUkodNgctmg5b5odG1nyW/IbOxQTqg==
 
 unique-slug@^2.0.0:
   version "2.0.2"

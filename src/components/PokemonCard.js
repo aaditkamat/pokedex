@@ -1,12 +1,12 @@
-import React from 'react';
-import '../css/PokemonCard.css';
-const PokemonCard = () => {
-    return (
-        <React.Fragment>
-            <img src="static/bulbusaur.png" alt="Bulbusaur" />
-            <div> Bulbusaur </div>
-        </React.Fragment>
-    )
+import React from "react"
+import "../css/PokemonCard.css"
+const PokemonCard = ({ name, spriteURL }) => {
+  return (
+    <React.Fragment>
+      <img src={spriteURL} alt="Bulbusaur" />
+      <div> {name} </div>
+    </React.Fragment>
+  )
 }
 
-export default PokemonCard;
+export default PokemonCard
