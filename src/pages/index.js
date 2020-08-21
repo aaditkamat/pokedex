@@ -12,30 +12,43 @@ export default function Home() {
   const pokemonNames = Pokemon.all()
   const [searchName, setSearchName] = useState("")
 
+  const getSpriteURL = name => {
+    try {
+      return PokemonImages.getSprite(name)
+    } catch (err) {
+      return PokemonImages.getSprite(pokemonNames[0])
+    }
+  }
   const showPokemon = () => {
     const filteredNames = _.filter(pokemonNames, pokemonName =>
       pokemonName.match(searchName)
     )
-    return _.range(0, filteredNames.length / 2).map(num => {
-      const names = [filteredNames[2 * num], filteredNames[2 * num + 1]]
-      const spriteURLs = _.map(names, name => {
-        try {
-          return PokemonImages.getSprite(name)
-        } catch (err) {
-          return PokemonImages.getSprite(pokemonNames[0])
-        }
+    const length = filteredNames.length
+    if (length !== 1) {
+      return _.range(0, filteredNames.length / 2).map(num => {
+        const names = [filteredNames[2 * num], filteredNames[2 * num + 1]]
+        const spriteURLs = _.map(names, name => getSpriteURL(name))
+        return (
+          <div className="row" key={num.toString()}>
+            <WelcomeBox>
+              <PokemonCard name={names[0]} spriteURL={spriteURLs[0]} />
+            </WelcomeBox>
+            <WelcomeBox>
+              <PokemonCard name={names[1]} spriteURL={spriteURLs[1]} />
+            </WelcomeBox>
+          </div>
+        )
       })
+    } else {
       return (
-        <div className="row" key={num.toString()}>
-          <WelcomeBox>
-            <PokemonCard name={names[0]} spriteURL={spriteURLs[0]} />
-          </WelcomeBox>
-          <WelcomeBox>
-            <PokemonCard name={names[1]} spriteURL={spriteURLs[1]} />
-          </WelcomeBox>
-        </div>
+        <WelcomeBox>
+          <PokemonCard
+            name={filteredNames[0]}
+            spriteURL={getSpriteURL(filteredNames[0])}
+          />
+        </WelcomeBox>
       )
-    })
+    }
   }
 
   const handleChange = event => {
