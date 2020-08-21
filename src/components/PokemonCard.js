@@ -1,11 +1,11 @@
 import React from "react"
 import "../css/PokemonCard.css"
-const PokemonCard = ({ name, spriteURL }) => {
+const PokemonCard = ({ name, spriteURL, onClick }) => {
   return (
-    <React.Fragment>
-      <img src={spriteURL} alt="Bulbusaur" />
+    <div className="pokemon-card">
+      <img src={spriteURL} alt={name} onClick={onClick} />
       <div> {name} </div>
-    </React.Fragment>
+    </div>
   )
 }
 

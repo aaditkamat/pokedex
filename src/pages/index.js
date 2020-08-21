@@ -11,7 +11,7 @@ import "../css/index.css"
 export default function Home() {
   const pokemonNames = Pokemon.all()
   const [searchName, setSearchName] = useState("")
-
+  const [clickName, setClickName] = useState("")
   const getSpriteURL = name => {
     try {
       return PokemonImages.getSprite(name)
@@ -31,10 +31,18 @@ export default function Home() {
         return (
           <div className="row" key={num.toString()}>
             <WelcomeBox>
-              <PokemonCard name={names[0]} spriteURL={spriteURLs[0]} />
+              <PokemonCard
+                name={names[0]}
+                spriteURL={spriteURLs[0]}
+                onClick={handleClick}
+              />
             </WelcomeBox>
             <WelcomeBox>
-              <PokemonCard name={names[1]} spriteURL={spriteURLs[1]} />
+              <PokemonCard
+                name={names[1]}
+                spriteURL={spriteURLs[1]}
+                onClick={handleClick}
+              />
             </WelcomeBox>
           </div>
         )
@@ -45,10 +53,23 @@ export default function Home() {
           <PokemonCard
             name={filteredNames[0]}
             spriteURL={getSpriteURL(filteredNames[0])}
+            onClick={handleClick}
           />
         </WelcomeBox>
       )
     }
+  }
+
+  const showPokedex = () => {
+    if (clickName === "") {
+      return <strong> Welcome to the pokedex </strong>
+    } else {
+      return <strong> {clickName} </strong>
+    }
+  }
+
+  const handleClick = event => {
+    setClickName(event.target.alt)
   }
 
   const handleChange = event => {
@@ -73,7 +94,7 @@ export default function Home() {
           </InfoBox>
           <InfoBox>
             <WelcomeBox style={{ marginTop: "8.5em" }}>
-              <strong> Welcome to the pokedex </strong>
+              {showPokedex()}
             </WelcomeBox>
           </InfoBox>
         </div>
